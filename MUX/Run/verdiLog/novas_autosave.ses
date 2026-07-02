@@ -1,0 +1,77 @@
+@verdi rc file Version 1.0
+[General]
+saveDB = TRUE
+relativePath = FALSE
+saveSingleView = FALSE
+saveNWaveWinId = 
+VerdiVersion = Verdi_V-2023.12-SP2-3
+[KeyNote]
+Line1 = Automatic Backup 0
+Line2 = Save Open Database Information: Yes
+Line3 = Path Option: Absolute Paths
+Line4 = Windows Option: All Windows
+[OneSearch]
+isExisted = TRUE
+[SEQ]
+seqXmlFile = /home/sathwikb/common/Documents/Final_Project/MUX/Run/vcst_rtdb/.internal/formal/verdiSeqMapping.xml
+seqDebugMode = TRUE
+[TestBench]
+ConstrViewShow = 0
+InherViewShow = 0
+FSDBMsgShow = 0
+AnnotationShow = 0
+Console = FALSE
+powerDumped = 0
+[Verdi_1]
+workMode = FormalVerification
+[Xprop_Option]
+Xprop_Value = tmerge
+[fusa]
+fdb_server = 
+fdb_proj = 
+fdb_campaign = 
+fdb_tool = 
+[hb]
+viewport = 0 24 1022 690 0 0 154 1020
+activeNode = "seq_top.impl"
+activeScope = "seq_top.impl"
+activeFile = "../RTL/Mux8to1.sv"
+interactiveMode = False
+viewType = Source
+simulatorMode = False
+sourceBeginLine = 0
+baMode = False
+srcLineNum = True
+AutoWrap = True
+IdentifyFalseLogic = True
+syncSignal = True
+traceMode = Hierarchical
+showTraceInSchema = True
+paMode = False
+funcMode = True
+powerAwareAnnot = False
+safetyAwareAnnot = True
+amsAnnot = True
+DnDtraceCrossHierOnly = True
+leadingZero = False
+signalPane = False
+userAnnot = False
+userAnnotField = 0
+SourceVerticalScrollLines = 5
+Scope1 = "seq_top.impl"
+Scope2 = "seq_top"
+multipleSelection = 1 0 2 0 0
+sdfCheckUndef = FALSE
+simFlow = FALSE
+[hb.design]
+importCmd = "-simflow" "-smart_load_kdb" "-dbdir" "/home/sathwikb/common/Documents/Final_Project/MUX/Run/vcst_rtdb/.internal/design/seq_top.exe.daidir" 
+invokeDir = /home/sathwikb/common/Documents/Final_Project/MUX/Run
+[hb.sourceTab.1]
+scope = seq_top.impl
+File = /home/sathwikb/common/Documents/Final_Project/MUX/RTL/Mux8to1.sv
+Line = 1
+Active = TRUE
+[hb.sourceTab.2]
+scope = seq_top.spec
+File = /home/sathwikb/common/Documents/Final_Project/MUX/RTL/Mux8to1_2.sv
+Line = 1

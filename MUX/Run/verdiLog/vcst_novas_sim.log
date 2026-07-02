@@ -1,0 +1,90 @@
+                                   VC Static 
+              Version V-2023.12-SP2-3 for linux64 - Oct 12, 2024
+                    Copyright (c) 2010 - 2024 Synopsys, Inc.
+   This software and the associated documentation are proprietary to Synopsys,
+ Inc. This software may only be used in accordance with the terms and conditions
+ of a written license agreement with Synopsys, Inc. All other use, reproduction,
+   or distribution of this software is strictly prohibited.  Licensed Products
+     communicate with Synopsys servers for the purpose of providing software
+    updates, detecting software piracy and verifying that customers are using
+    Licensed Products in conformity with the applicable License Key for such
+  Licensed Products. Synopsys will use information gathered in connection with
+    this process to deliver software updates and pursue software pirates and
+                                   infringers.
+ Inclusivity & Diversity - Visit SolvNetPlus to read the "Synopsys Statement on
+            Inclusivity and Diversity" (Refer to article 000036315 at
+                        https://solvnetplus.synopsys.com)
+#MasterSourceFile run_seq.tcl
+set_fml_appmode SEQ
+1
+analyze -format sverilog -library spec ../RTL/Mux8to1_2.sv
+1
+analyze -format sverilog -library impl ../RTL/Mux8to1.sv
+1
+elaborate_seq -spectop Mux8to1_2 -impltop Mux8to1
+[Warning] COM_OPT009: 'search_path' has not been set.
+[Warning] COM_OPT010: 'link_library' has not been set.
+Doing common elaboration 
+Info: Invoking Simon...
+Info: Simon VCS Start
+=======================================================
+VCS CPU Time(s)     :0.43
+SIMON CPU Time(s)   :0.11
+SIMON Total Time(s) :0.09
+Peak Memory(MB)     :435
+=======================================================
+Info: Simon VCS Finished
+Info: Simon call complete 
+Info: Exiting after Simon Analysis 
+Verdi KDB elaboration done and the database successfully generated: 0 error(s), 0 warning(s)
+# Gate Counts 
+Number of Flat Instances = 27
+Number of Operator = 27
+Number of Libcells = 0
+Number of Black-Box Instances = 0
+Number of FlipFlop BitWise = 0
+Number of Latch Bitwise = 0
+Number of Nand BitWise = 0
+Number of Comb logic = 40
+1
+map_by_name -input 
+[Warning] SEQ_OPTION_DEPRECATED: The option(s) '-input' have been deprecated and will be removed from future releases.
+	Please use the '-map_type' option to provide this information.
+[Info] MAPPING_ENABLED: input.
+[Info] MAPPING_DISABLED: output, blackbox, CMA, undriven, abstraction.
+[Info] MBN_SUMMARY: '2' primary inputs are mapped as assumes.
+1
+fvassert -expr {spec.Y == impl.Y}
+1
+1
+1
+#check_fv
+[Info] ENVCNSTR_I_INSTR: Instrument Environment Constraints.
+	Constraints are applied to all checks from this point and will be applied across all user tasks.
+[Info] AUTO_SIM_SAVE_RESET: Saving the reset states.
+	Either the command 'sim_save_reset' has not been run or the reset states need to be saved again.
+[Warning] SIM_RESET_GENERATED: The initial reset state will be generated without simulation having been run.
+	To get reset simulation trace, please run sim_run prior to sim_save_reset.
+[Info] REGISTER_MAP_BY_NAME: '0' registers are mapped by name between the two designs.
+	'0' registers are not mapped between the two designs due to different name/reset state.
+[Info] FORMAL_I_CREATE: Create Formal Model:seq_top.
+[Info] FORMAL_I_RUN: Starting formal verification for check_fv
+	  Id: 0  Goals: 1  Constraints: 2  Block Mode: false
+[Info] LIC_UNUSED_WORKERS: 8 unused worker(s) based 1 licenses needed to support 4 workers requested.
+	Use 'set_grid_usage' to maximize worker usage and improve performance, if there are sufficient compute resources to support more workers.
+	Each runtime license supports 12 workers.
+[Info] LIC_RT_CHECKOUT: VC Formal run time license checkout. Base:1  SEQ:1.
+[Warning] LEARNED_DATA_NOT_FOUND: No existing learned data found in 'seq_top_learn_dir'
+[Info] TW_INFO_MSG: Starting rewrite (rw1_1) command at 2025-12-02::19:51:42.
+[Info] BITLEVEL_MODEL_STATS: Generated model with 56 gates, 11 inputs, 0 registers, 0 initial constraints, 0 constraints.
+[Info] TW_INFO_MSG: Proof rw1_1 gates : 56 inputs : 11 reg : 0 initConst : 0 invarConst : 0 .
+[Info] TW_INFO_MSG: Finished rewrite (rw1_1) command in 2 seconds.
+[Info] TW_INFO_MSG: Starting v4 refine (rw1_1) command at 2025-12-02::19:51:44.
+[Info] TW_INFO_MSG: Finished refine (rw1_1) command in 1 seconds.
+#check_fv
+[Error] NO_PROPERTIES_FOUND_SEQ: No properties have been identified for verification.
+	Possible reasons are: 
+	1. All existing properties have already been run and converged.
+	2. Sequential Equivalence Check was not enabled. Please check and rerun.
+Error: 0
+	Use error_info for more info. (CMD-013)
