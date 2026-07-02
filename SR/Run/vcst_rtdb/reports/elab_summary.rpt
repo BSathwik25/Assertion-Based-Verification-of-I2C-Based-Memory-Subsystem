@@ -1,0 +1,54 @@
+###############################################################
+ # This report contains names of design units along with parameter
+ # values and self instances.
+ # Some parameters may have more than one possible values for that
+ # design unit, values will be unique for instances. It is indicated as
+ # "Multiple Values".
+ # In some cases instance count shown may be less than actual instance
+ # count in the design due to optimizations. It is indicated as
+ # "Optimized".
+###############################################################
+
+
+Design Unit Name: 'seq_top', (/home/sathwikb/common/Documents/Final_Project/SR/Run/vcst_rtdb/.internal/design/_snps_seq_top.sv:1)
+    Parameters (Total 0)
+    Instances (Total: 0)
+=============================================
+
+
+Design Unit Name: 'SPEC.shift_register_2', (../RTL/shift_register_2.sv:29)
+    Parameters (Total 0)
+    Instances (Total 1)
+        seq_top.spec
+=============================================
+
+
+Design Unit Name: 'IMPL.Mux8to1', (../RTL/shift_register.sv:42)
+    Parameters (Total 0)
+    Instances (Total 8)(Optimized)
+        seq_top.impl.Instance0
+        seq_top.impl.InstanceN
+        seq_top.impl.MuxInstance[1].m
+        seq_top.impl.MuxInstance[2].m
+        seq_top.impl.MuxInstance[3].m
+=============================================
+
+
+Design Unit Name: 'IMPL.shift_register', (../RTL/shift_register.sv:51)
+    Parameters (Total 0)
+    Instances (Total 1)
+        seq_top.impl
+=============================================
+
+
+Design Unit Name: 'IMPL.DFF', (../RTL/shift_register.sv:29)
+    Parameters (Total 0)
+    Instances (Total 8)(Optimized)
+        seq_top.impl.DFFInstance[0].m
+        seq_top.impl.DFFInstance[1].m
+        seq_top.impl.DFFInstance[2].m
+        seq_top.impl.DFFInstance[3].m
+        seq_top.impl.DFFInstance[4].m
+=============================================
+
+
