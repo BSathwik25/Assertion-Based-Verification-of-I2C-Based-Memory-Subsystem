@@ -1,0 +1,76 @@
+                                   VC Static 
+              Version V-2023.12-SP2-3 for linux64 - Oct 12, 2024
+                    Copyright (c) 2010 - 2024 Synopsys, Inc.
+   This software and the associated documentation are proprietary to Synopsys,
+ Inc. This software may only be used in accordance with the terms and conditions
+ of a written license agreement with Synopsys, Inc. All other use, reproduction,
+   or distribution of this software is strictly prohibited.  Licensed Products
+     communicate with Synopsys servers for the purpose of providing software
+    updates, detecting software piracy and verifying that customers are using
+    Licensed Products in conformity with the applicable License Key for such
+  Licensed Products. Synopsys will use information gathered in connection with
+    this process to deliver software updates and pursue software pirates and
+                                   infringers.
+ Inclusivity & Diversity - Visit SolvNetPlus to read the "Synopsys Statement on
+            Inclusivity and Diversity" (Refer to article 000036315 at
+                        https://solvnetplus.synopsys.com)
+#MasterSourceFile run_fpv.tcl
+set_fml_appmode FPV 
+1
+set design DFF_top
+DFF_top
+read_file -top DFF_top -format sverilog -sva -vcs {-f ../RTL/filelist}
+Info: Invoking New SVA Compiler Instrument...
+Info: SVAC-NC Start
+Info: SVAC-NC Finished
+Info: Invoking Simon...
+Info: Simon VCS Start
+=======================================================
+VCS CPU Time(s)     :0.35
+SIMON CPU Time(s)   :0.08
+SIMON Total Time(s) :0.07
+Peak Memory(MB)     :413
+=======================================================
+Info: Simon VCS Finished
+Info: Simon call complete 
+Info: Exiting after Simon Analysis 
+Verdi KDB elaboration done and the database successfully generated: 0 error(s), 0 warning(s)
+[Info] DB_COPT045: Vcs analyzer task has finished.
+[Info] PROP_I_COLLECT: Collecting Source Properties from the view:DFF_top.
+# Gate Counts 
+Number of Flat Instances = 3
+Number of Operator = 3
+Number of Libcells = 0
+Number of Black-Box Instances = 0
+Number of FlipFlop BitWise = 1
+Number of Latch Bitwise = 0
+Number of Nand BitWise = 0
+Number of Comb logic = 3
+1
+create_clock Clock -period 100
+1
+create_reset Clear -sense low
+1
+sim_run -stable
+[Info] SIM_I_CREATE: Create Simulation Model.
+1
+sim_save_reset
+1
+fvassert -expr {@(posedge Clock) disable iff(!Clear) D |=> Q}
+1
+fvassert -expr {@(posedge Clock) disable iff(!Clear) !D |=> !Q}
+1
+1
+#check_fv
+[Info] FORMAL_I_CREATE: Create Formal Model:DFF_top.
+[Warning] POTENTIAL_SETUP_ISSUES: There are potential setup issues. Please run check_fv_setup to confirm.
+	  Reset: 1  Clock: 0  Glitch: 0  Osc_loop: 0  Osc_seq: 0
+[Info] FORMAL_I_RUN: Starting formal verification for check_fv
+	  Id: 0  Goals: 4  Constraints: 0  Block Mode: false
+[Info] LIC_UNUSED_WORKERS: 8 unused worker(s) based 1 licenses needed to support 4 workers requested.
+	Use 'set_grid_usage' to maximize worker usage and improve performance, if there are sufficient compute resources to support more workers.
+	Each runtime license supports 12 workers.
+[Info] LIC_RT_CHECKOUT: VC Formal run time license checkout. Base:1  FPV:1.
+[Warning] LEARNED_DATA_NOT_FOUND: No existing learned data found in 'DFF_top_learn_dir'
+[Info] BITLEVEL_MODEL_STATS: Generated model with 16 gates, 1 inputs, 8 registers, 0 initial constraints, 0 constraints.
+[Info] BITLEVEL_MODEL_STATS: Generated model with 4 gates, 1 inputs, 6 registers, 0 initial constraints, 0 constraints.
