@@ -1,0 +1,133 @@
+module I2C_slave_sva(
+    input logic [DATA_WIDTH-1:0] data_out,
+    input bit done,
+    input logic ACK, 
+    input logic SDA,
+    input logic SCL,
+    input bit clk, reset_n,
+    input state_t present_state, next_state,
+    input bit [3:0] addr_count,
+    input bit [2:0] data_count,
+    input logic m_rd_wrn,
+    input logic start, stop,
+    input logic illegal_addr  // ADDED for proper checking
+);
+
+property s1_p;
+    @(posedge clk) disable iff(!reset_n)
+        (present_state == S_IDLE && start === '1) |=> (present_state == COLLECT_ADDR);
+endproperty
+assertion_s1_a : assert property(s1_p)
+    else $display("s1_p property failed!");
+
+property s2_p;
+    @(posedge clk) disable iff(!reset_n)
+        (present_state == COLLECT_ADDR && addr_count === 7) |=> (present_state == COLLECT_RW);
+endproperty
+assertion_s2_a : assert property(s2_p)
+    else $display("s2_p property failed!");
+
+property s3_p;
+    @(posedge clk) disable iff(!reset_n)
+        (present_state == COLLECT_ADDR && addr_count !== 7) |=> (present_state == COLLECT_ADDR);
+endproperty
+assertion_s3_a : assert property(s3_p)
+    else $display("s3_p property failed!");
+	
+property s4_p;
+    @(posedge clk) disable iff(!reset_n)
+        (present_state == COLLECT_RW) |=> (present_state == SEND_ADDR_ACK);
+endproperty
+assertion_s4_a : assert property(s4_p)
+    else $display("s4_p property failed!");
+
+// FIXED: Only check when address is legal
+property s5_p;
+    @(posedge clk) disable iff(!reset_n)
+        ((present_state == SEND_ADDR_ACK && m_rd_wrn === 0 && !illegal_addr)) 
+        |=> (present_state == COLLECT_DATA);
+endproperty
+assertion_s5_a : assert property(s5_p)
+    else $display("s5_p property failed!");
+
+property s6_p;
+    @(posedge clk) disable iff(!reset_n)
+        (present_state == SEND_ADDR_ACK && m_rd_wrn === 1 && stop === 0) 
+        |=> (present_state == SEND_ADDR_ACK);
+endproperty
+assertion_s6_a : assert property(s6_p)
+    else $display("s6_p property failed!");
+
+property s7_p;
+    @(posedge clk) disable iff(!reset_n)
+        (present_state == SEND_ADDR_ACK && m_rd_wrn === 1 && stop === 1) 
+        |=> (present_state == S_IDLE);
+endproperty
+assertion_s7_a : assert property(s7_p)
+    else $display("s7_p property failed!");
+
+property s8_p;
+    @(posedge clk) disable iff(!reset_n)
+        (present_state == COLLECT_DATA && data_count === 7) 
+        |=> (present_state == SEND_WRITE_ACK);
+endproperty
+assertion_s8_a : assert property(s8_p)
+    else $display("s8_p property failed!");
+
+property s9_p;
+    @(posedge clk) disable iff(!reset_n)
+        (present_state == COLLECT_DATA && data_count !== 7) 
+        |=> (present_state == COLLECT_DATA);
+endproperty
+assertion_s9_a : assert property(s9_p)
+    else $display("s9_p property failed!");
+
+property s10_p;
+    @(posedge clk) disable iff(!reset_n)
+        (present_state == SEND_WRITE_ACK && stop === 1) 
+        |=> (present_state == S_IDLE);
+endproperty
+assertion_s10_a : assert property(s10_p)
+    else $display("s10_p property failed!");
+
+property s11_p;
+    @(posedge clk) disable iff(!reset_n)
+        (present_state == COLLECT_ADDR && addr_count < ADDR_WIDTH) 
+        |=> addr_count == ($past(addr_count) + 1);
+endproperty
+assertion_s11_a : assert property(s11_p)
+    else $display("s11_p property failed!");
+
+// FIXED: Only check ACK=0 when address is legal
+property s12_p;
+    @(posedge clk) disable iff(!reset_n)
+        ((present_state == SEND_ADDR_ACK || present_state == SEND_WRITE_ACK) 
+         && !illegal_addr) 
+        |-> ACK == 1'b0;
+endproperty
+assertion_s12_a : assert property(s12_p)
+    else $display("s12_p property failed!");
+                 
+// FIXED: Only check done=1 when address is legal
+property s13_p;
+    @(posedge clk) disable iff(!reset_n)
+        ((present_state == SEND_ADDR_ACK && m_rd_wrn == 1) && !illegal_addr) 
+        |-> done == 1'b1;
+endproperty
+assertion_s13_a : assert property(s13_p)
+    else $display("s13_p property failed!");
+
+covergroup cg @(posedge clk);
+    c2: coverpoint data_out { 
+        bins b1 = {[0:40]};
+        bins b2 = {[41:80]};
+        bins b3 = {[81:120]};                        
+        bins b4 = {[121:160]};
+        bins b5 = {[161:200]};
+        bins b6 = {[201:255]};
+    }
+endgroup : cg
+
+cg cover_inst = new();
+
+endmodule

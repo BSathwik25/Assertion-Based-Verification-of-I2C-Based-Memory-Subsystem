@@ -1,0 +1,116 @@
+###############################################################
+ # This report contains names of design units along with parameter
+ # values and self instances.
+ # Some parameters may have more than one possible values for that
+ # design unit, values will be unique for instances. It is indicated as
+ # "Multiple Values".
+ # In some cases instance count shown may be less than actual instance
+ # count in the design due to optimizations. It is indicated as
+ # "Optimized".
+###############################################################
+
+
+Design Unit Name: 'top_I2C', (../RTL/top_I2C.sv:1)
+    Parameters (Total 0)
+    Instances (Total: 0)
+=============================================
+
+
+Design Unit Name: 'Mux8to1', (../RTL/shift_register.sv:14)
+    Parameters (Total 0)
+    Instances (Total 8)(Optimized)
+        top_I2C.i_SR.Instance0
+        top_I2C.i_SR.InstanceN
+        top_I2C.i_SR.MuxInstance[1].m
+        top_I2C.i_SR.MuxInstance[2].m
+        top_I2C.i_SR.MuxInstance[3].m
+=============================================
+
+
+Design Unit Name: 'I2C_master', (../RTL/I2C_master.sv:6)
+    Parameters (Total 2)
+        BURST_LEN = 8  (default: 8)
+        REP_START_EN = 1'b1  (default: 1'b1)
+    Instances (Total 1)
+        top_I2C.i_I2C_master
+=============================================
+
+
+Design Unit Name: 'I2C_slave', (../RTL/I2C_slave.sv:6)
+    Parameters (Total 2)
+        MEM_TOTAL_DEPTH = 256  (default: 256)
+        MEM_LEGAL_DEPTH = 128  (default: 128)
+    Instances (Total 1)
+        top_I2C.i_I2C_slave
+=============================================
+
+
+Design Unit Name: 'I2C_master_sva', (../RTL/I2C_master_sva.sva:1)
+    Parameters (Total 0)
+    Instances (Total 1)
+        top_I2C.i_I2C_master.assert_master
+=============================================
+
+
+Design Unit Name: 'I2C_slave_sva', (../RTL/I2C_slave_sva.sva:1)
+    Parameters (Total 0)
+    Instances (Total 1)
+        top_I2C.i_I2C_slave.assert_slave
+=============================================
+
+
+Design Unit Name: 'shift_register_sva', (../RTL/shift_register_sva.sva:1)
+    Parameters (Total 0)
+    Instances (Total 1)
+        top_I2C.i_SR.assert_sr
+=============================================
+
+
+Design Unit Name: 'I2C_protocol_sva', (../RTL/I2C_protocol_sva.sv:7)
+    Parameters (Total 0)
+    Instances (Total 1)(Optimized)
+        top_I2C.assert_protocol
+=============================================
+
+
+Design Unit Name: 'I2C_end2end_sva', (../RTL/I2C_end2end_sva.sv:8)
+    Parameters (Total 0)
+    Instances (Total 1)(Optimized)
+        top_I2C.i_I2C_slave.assert_end2end
+=============================================
+
+
+Design Unit Name: 'I2C_master_cov', (../RTL/I2C_coverage.sv:6)
+    Parameters (Total 0)
+    Instances (Total 2)
+        top_I2C.i_I2C_master.cover_master
+        top_I2C.i_I2C_master.u_i2c_master_cov
+=============================================
+
+
+Design Unit Name: 'I2C_slave_cov', (../RTL/I2C_coverage.sv:74)
+    Parameters (Total 0)
+    Instances (Total 2)
+        top_I2C.i_I2C_slave.cover_slave
+        top_I2C.i_I2C_slave.u_i2c_slave_cov
+=============================================
+
+
+Design Unit Name: 'shift_register', (../RTL/shift_register.sv:23)
+    Parameters (Total 0)
+    Instances (Total 1)
+        top_I2C.i_SR
+=============================================
+
+
+Design Unit Name: 'DFF', (../RTL/shift_register.sv:1)
+    Parameters (Total 0)
+    Instances (Total 8)(Optimized)
+        top_I2C.i_SR.DFFInstance[0].m
+        top_I2C.i_SR.DFFInstance[1].m
+        top_I2C.i_SR.DFFInstance[2].m
+        top_I2C.i_SR.DFFInstance[3].m
+        top_I2C.i_SR.DFFInstance[4].m
+=============================================
+
+

@@ -1,0 +1,37 @@
+2025-11-29 20:02:57:1764475377531 | INFO  | Process Limits
+	 Virual Memory -> 65536 MB
+	 Time Limit -> no limit
+	 Stack Size -> no limit
+	 Data Segment -> no limit
+	 File Size -> no limit
+	 Lock Limit -> no limit
+	 CPU Time Limit -> no limit
+	 RSS  -> no limit
+	 Threads  -> 4096 
+Available Cores : 32
+SystemInfo : totalram=122722 freeram=55626.4 sharedram=0 bufferram=290.242 totalswap=0 freeswap=0 procs= 4372
+
+2025-11-29 20:02:57:1764475377636 | INFO  | Share License key => 4064905898135243396 for master run  Old Key => 4064905898135243396
+2025-11-29 20:02:58:1764475378762 | INFO  | registerSyncPoint: check_cdc cmdPtr: 0x30d38000
+2025-11-29 20:02:58:1764475378762 | INFO  | registerSyncPoint: check_glitch cmdPtr: 0x30d44000
+2025-11-29 20:02:58:1764475378762 | INFO  | registerSyncPoint: check_hazard cmdPtr: 0x30d44490
+2025-11-29 20:02:58:1764475378762 | INFO  | registerSyncPoint: check_rdc cmdPtr: 0x1711f980
+2025-11-29 20:02:58:1764475378762 | INFO  | registerSyncPoint: finish_distributed_run cmdPtr: 0x30bb6800
+2025-11-29 20:02:58:1764475378762 | INFO  | registerSyncPoint: sync_active_scenarios cmdPtr: 0x317c5540
+2025-11-29 20:02:58:1764475378762 | INFO  | registerSyncPoint: write_abstract_model cmdPtr: 0x316dd000
+2025-11-29 20:02:58:1764475378762 | INFO  | registerSyncPoint: write_constr_abstract_model cmdPtr: 0x30d6c000
+2025-11-29 20:02:58:1764475378762 | INFO  | Trigger point for reading scenarioSpecific/common files: check_rdc
+2025-11-29 20:02:58:1764475378762 | INFO  | Trigger point for reading scenarioSpecific/common files: check_hazard
+2025-11-29 20:02:58:1764475378762 | INFO  | Trigger point for reading scenarioSpecific/common files: check_cdc
+2025-11-29 20:02:58:1764475378762 | INFO  | Trigger point for reading scenarioSpecific/common files: check_glitch
+2025-11-29 20:03:01:1764475381142 | INFO  | restoreDesignForChildModes child: 0  designShare: 0 isDesignReadProcess: 0 designExists:0
+2025-11-29 20:03:01:1764475381143 | INFO  | .. don't restore design
+2025-11-29 20:03:07:1764475387063 | INFO  | saveDesignForChildModes: MM not enabled
+2025-11-29 20:03:15:1764475395897 | ERROR | handleTclCmd: fvassume -expr {@(posedge clk) disable iff (!reset_n)
+    !( (present_state == SEND_WRITE_ACK && stop == 1 && !illegal_addr)
+       ##[1:$]
+       (present_state == SEND_WRITE_ACK && stop == 1 && !illegal_addr)
+    )};
+ status: 1 insidesource: 1 sh_continue_on_error: false isChildMode: 0
+2025-11-29 20:03:15:1764475395905 | ERROR | handleTclCmd: source -echo -verbose run.tcl status: 1 insidesource: 0 sh_continue_on_error: false isChildMode: 0
+2025-11-29 20:52:48:1764478368461 | INFO  | exitChilds

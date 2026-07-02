@@ -1,0 +1,7 @@
+Command: vcs -sverilog -Xmonet -scm /home/sathwikb/common/Documents/Final_Project/top_I2C/Run/vcst_rtdb/.internal/design/_VCF_PROP_0.xml \
+-o /home/sathwikb/common/Documents/Final_Project/top_I2C/Run/vcst_rtdb/.internal/design/work._VCF_PROP_0.exe \
+-Mdir=/home/sathwikb/common/Documents/Final_Project/top_I2C/Run/vcst_rtdb/.internal/design/csrc \
++warn=noIWNF +warn=noELW_UNBOUND -suppress=DB_LOAD -suppress=SIMU-RESOLUTION -q -l \
+/home/sathwikb/common/Documents/Final_Project/top_I2C/Run/vcst_rtdb/logs/_VCF_PROP_0.vcslog \
+-assert svaext -cm assert -error=noMPD -full64 /home/sathwikb/common/Documents/Final_Project/top_I2C/Run/vcst_rtdb/.internal/formal/_prop_2.sv \
+

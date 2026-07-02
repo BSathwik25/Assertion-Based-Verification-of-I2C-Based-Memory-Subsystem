@@ -1,0 +1,14 @@
+../RTL/design_defines.vh
+../RTL/top_I2C.sv
+../RTL/I2C_master.sv
+../RTL/I2C_slave.sv
+../RTL/shift_register.sv
+../RTL/I2C_master_sva.sva
+../RTL/I2C_slave_sva.sva
+../RTL/shift_register_sva.sva
+../RTL/bind_file.sva
+../RTL/I2C_coverage.sv
+../RTL/I2C_end2end_sva.sv
+../RTL/I2C_package.sv
+../RTL/I2C_protocol_sva.sv
+

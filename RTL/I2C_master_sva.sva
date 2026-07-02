@@ -1,0 +1,88 @@
+module I2C_master_sva(
+ input logic [DATA_WIDTH-1:0] data_in,
+ input logic [ADDR_WIDTH-1:0] addr_in,
+ input logic clk, reset, ACK,
+ input logic wr_rdn_en_in, enable,
+ input logic SDA, SCL,
+ input State present_state,next_state,
+ input logic [3:0] count, count1,
+ input logic wr_rdn_en);
+ 
+
+property m1_p;
+    @(posedge clk) disable iff(reset)
+    (present_state == IDLE && enable === 1) |=> (present_state == START);
+endproperty
+assertion_m1_a : assert property(m1_p)
+    else $display("m1_p property failed!");
+
+property m2_p;
+    @(posedge clk) disable iff(reset)
+    (present_state == START) |=>  (present_state == ADDR_PHASE);
+endproperty
+assertion_m2_a : assert property(m2_p)
+    else $display("m2_p property failed!");
+
+property m3_p;
+    @(posedge clk) disable iff(reset)
+    (present_state == ADDR_PHASE && count === 1'b0) |=> (present_state == READ_WRITE_PHASE);
+endproperty
+assertion_m3_a : assert property(m3_p)
+    else $display("m3_p property failed!");
+
+property m4_p;
+    @(posedge clk) disable iff(reset)
+    (present_state == ADDR_PHASE && count !== 1'b0) |=> (present_state == ADDR_PHASE);
+endproperty
+assertion_m4_a : assert property(m4_p)
+    else $display("m4_p property failed!");
+
+property m5_p;
+    @(posedge clk) disable iff(reset)
+    (present_state == READ_WRITE_PHASE) |=> (present_state == ADDR_ACK);
+endproperty
+assertion_m5_a : assert property(m5_p)
+    else $display("m5_p property failed!");
+
+
+property m6_p;
+    @(posedge clk) disable iff(reset)
+    (present_state == STOP) |=> (present_state == IDLE);
+endproperty
+assertion_m6_a : assert property(m6_p)
+    else $display("m6_p property failed!");
+
+property m7_p;
+	@(posedge clk) disable iff (reset) 
+	(present_state == IDLE) |-> SDA == 1'b1;
+endproperty
+assertion_m7_a: assert property(m7_p)
+	else $display("m7_p property failed!");
+
+property m8_p;
+	@(posedge clk) disable iff (reset) 
+	(present_state == DATA_ACK) |-> SDA == 1'b0;
+endproperty
+assertion_m8_a: assert property(m8_p)
+	else $display("m8_p property failed!");
+
+property m9_p;
+	@(posedge clk) disable iff (reset) 
+	(present_state == IDLE || present_state == DATA_ACK || present_state == ADDR_ACK || present_state == STOP) |-> SCL == 1'b1;
+endproperty
+assertion_m9_a: assert property(m9_p)
+	else $display("m9_p property failed!");
+
+
+covergroup cg @(posedge clk);
+ c1: coverpoint data_in { bins b1 = {[0:40]};
+                        bins b2 = {[41:80]};
+                        bins b3 = {[81:120]};                        
+                        bins b4 = {[121:160]};
+                        bins b5 = {[161:200]};
+                        bins b6 = {[201:255]};
+						    }
+ endgroup : cg
+ cg cover_inst = new();
+
+endmodule

@@ -1,0 +1,8 @@
+#######################################################################################
+# fsdb.xxxxx.log : log primitive debug message of FSDB Reader
+# This is for R&D to analyze when there are issues happening when FSDB reading
+# The corresponding FSDB file is /home/bhanusai/common/Desktop/Final_Project/top_I2C/Run/vcst_rtdb/.internal/formal/fpId0/trace_32.xml.replay.fsdb.vf
+#######################################################################################
+[FSDBGate Info] start
+[FSDBGate Info] Total fhdb_compute_count = 0
+[FSDBGate Info] end

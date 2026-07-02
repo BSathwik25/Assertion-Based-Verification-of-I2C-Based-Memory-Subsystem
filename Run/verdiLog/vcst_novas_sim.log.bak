@@ -1,0 +1,200 @@
+rm: cannot remove 'vcst_rtdb.bak_1/.internal/verdi': Directory not empty
+#MasterSourceFile run.tcl
+set_fml_appmode FPV
+1
+set design top_I2C
+top_I2C
+read_file -top top_I2C -format sverilog -sva -vcs {-f ../Run/filelist}
+Info: Invoking New SVA Compiler Instrument...
+Info: SVAC-NC Start
+Info: SVAC-NC Finished
+Info: Invoking Simon...
+Info: Simon VCS Start
+Warning-[SM_UST] Unsupported System Task
+../RTL/shift_register_sva.sva, 17
+  Unsupported system task '$display' will be ignored for synthesis
+Warning-[SM_UST] Unsupported System Task
+../RTL/shift_register_sva.sva, 25
+  Unsupported system task '$display' will be ignored for synthesis
+Warning-[SM_UST] Unsupported System Task
+../RTL/shift_register_sva.sva, 33
+  Unsupported system task '$display' will be ignored for synthesis
+Warning-[SM_UST] Unsupported System Task
+../RTL/I2C_master_sva.sva, 17
+  Unsupported system task '$display' will be ignored for synthesis
+Warning-[SM_UST] Unsupported System Task
+../RTL/I2C_master_sva.sva, 24
+  Unsupported system task '$display' will be ignored for synthesis
+Warning-[SM_UST] Unsupported System Task
+../RTL/I2C_master_sva.sva, 31
+  Unsupported system task '$display' will be ignored for synthesis
+Warning-[SM_UST] Unsupported System Task
+../RTL/I2C_master_sva.sva, 38
+  Unsupported system task '$display' will be ignored for synthesis
+Warning-[SM_UST] Unsupported System Task
+../RTL/I2C_slave_sva.sva, 21
+  Unsupported system task '$display' will be ignored for synthesis
+Warning-[SM_UST] Unsupported System Task
+../RTL/I2C_master_sva.sva, 45
+  Unsupported system task '$display' will be ignored for synthesis
+Warning-[SM_UST] Unsupported System Task
+../RTL/I2C_slave_sva.sva, 28
+  Unsupported system task '$display' will be ignored for synthesis
+Warning-[SM_UST] Unsupported System Task
+../RTL/I2C_master_sva.sva, 53
+  Unsupported system task '$display' will be ignored for synthesis
+Warning-[SM_UST] Unsupported System Task
+../RTL/I2C_master_sva.sva, 60
+  Unsupported system task '$display' will be ignored for synthesis
+Warning-[SM_UST] Unsupported System Task
+../RTL/I2C_slave_sva.sva, 35
+  Unsupported system task '$display' will be ignored for synthesis
+Warning-[SM_UST] Unsupported System Task
+../RTL/I2C_master_sva.sva, 67
+  Unsupported system task '$display' will be ignored for synthesis
+Warning-[SM_UST] Unsupported System Task
+../RTL/I2C_master_sva.sva, 74
+  Unsupported system task '$display' will be ignored for synthesis
+Warning-[SM_UST] Unsupported System Task
+../RTL/I2C_slave_sva.sva, 42
+  Unsupported system task '$display' will be ignored for synthesis
+Warning-[SM_UST] Unsupported System Task
+../RTL/I2C_slave_sva.sva, 51
+  Unsupported system task '$display' will be ignored for synthesis
+Warning-[SM_UST] Unsupported System Task
+../RTL/I2C_protocol_sva.sv, 47
+  Unsupported system task '$error' will be ignored for synthesis
+Warning-[SM_UST] Unsupported System Task
+../RTL/I2C_slave_sva.sva, 59
+  Unsupported system task '$display' will be ignored for synthesis
+Warning-[SM_UST] Unsupported System Task
+../RTL/I2C_slave_sva.sva, 67
+  Unsupported system task '$display' will be ignored for synthesis
+Warning-[SM_UST] Unsupported System Task
+../RTL/I2C_slave_sva.sva, 75
+  Unsupported system task '$display' will be ignored for synthesis
+Warning-[SM_UST] Unsupported System Task
+../RTL/I2C_slave_sva.sva, 83
+  Unsupported system task '$display' will be ignored for synthesis
+Warning-[SM_UST] Unsupported System Task
+../RTL/I2C_slave_sva.sva, 91
+  Unsupported system task '$display' will be ignored for synthesis
+Warning-[SM_UST] Unsupported System Task
+../RTL/I2C_slave_sva.sva, 99
+  Unsupported system task '$display' will be ignored for synthesis
+Warning-[SM_UST] Unsupported System Task
+../RTL/I2C_slave_sva.sva, 109
+  Unsupported system task '$display' will be ignored for synthesis
+Warning-[SM_UST] Unsupported System Task
+../RTL/I2C_slave_sva.sva, 118
+  Unsupported system task '$display' will be ignored for synthesis
+Note-[SM_EMPTY_DU] Marking empty Module/Entity as blackbox
+../RTL/I2C_coverage.sv, 74
+  Module/Entity 'I2C_slave_cov' is marked as a blackbox because it is empty
+Warning-[SM_MLAC] Modelling latched logic for always_comb
+../RTL/I2C_master.sv, 81
+  Modelling latched logic for always_comb for signal 'addr'.
+Warning-[SM_MLAC] Modelling latched logic for always_comb
+../RTL/I2C_master.sv, 81
+  Modelling latched logic for always_comb for signal 'data'.
+Warning-[SM_MLAC] Modelling latched logic for always_comb
+../RTL/I2C_master.sv, 81
+  Modelling latched logic for always_comb for signal 'wr_rdn_en'.
+Warning-[SM_BB_LIST] Blackbox module list
+  List of modules in design which are blackboxed by tool/user (1): 
+  I2C_slave_cov
+=======================================================
+VCS CPU Time(s)     :0.86
+SIMON CPU Time(s)   :1.29
+SIMON Total Time(s) :0.59
+Peak Memory(MB)     :428
+=======================================================
+Info: Simon VCS Finished
+Info: Simon call complete 
+Info: Exiting after Simon Analysis 
+Verdi KDB elaboration done and the database successfully generated: 0 error(s), 0 warning(s)
+[Info] DB_COPT045: Vcs analyzer task has finished.
+[Info] PROP_I_COLLECT: Collecting Source Properties from the view:top_I2C.
+# Gate Counts 
+Number of Flat Instances = 11589
+Number of Operator = 11587
+Number of Libcells = 0
+Number of Black-Box Instances = 2
+Number of FlipFlop BitWise = 4290
+Number of Latch Bitwise = 17
+Number of Nand BitWise = 1
+Number of Comb logic = 6169
+1
+create_clock clk -period 100
+1
+create_reset reset_n -sense low
+1
+sim_run -stable
+[Info] SIM_I_CREATE: Create Simulation Model.
+1
+sim_save_reset
+1
+# ---------------------------
+# Basic sanity assumptions
+# ---------------------------
+fvassume -expr {reset_n !== 1'bx}
+1
+fvassume -expr {Master_enable !== 1'bx}
+1
+fvassume -expr {rd_wr_en !== 1'bx}
+1
+fvassume -expr {addr_in !== 8'hxx}
+1
+fvassume -expr {D_in !== 8'hxx}
+1
+fvassume -expr {S_in !== 3'bxxx}
+1
+fvassume -expr {addr_in inside {[0:255]}}
+1
+fvassume -expr {D_in inside {[0:255]}}
+1
+fvassume -expr {S_in inside {[3'b000:3'b111]}}
+1
+# Master enable stable
+fvassume -expr {Master_enable == 1'b0 || Master_enable == 1'b1}
+1
+# ---------------------------
+# NEW: Prevent multiple writes before read
+# ---------------------------
+fvassume -expr {@(posedge clk) disable iff (!reset_n)
+    !( (present_state == SEND_WRITE_ACK && stop == 1 && !illegal_addr)
+       ##[1:$]
+       (present_state == SEND_WRITE_ACK && stop == 1 && !illegal_addr)
+    )};
+[Error] PROP_E_VLOG_PARSING: Error while parsing Verilog expression: @(posedge clk) disable iff (!reset_n)
+    !( (present_state == SEND_WRITE_ACK && stop == 1 && !illegal_addr)
+       ##[1:$]
+       (present_state == SEND_WRITE_ACK && stop == 1 && !illegal_addr)
+    )
+	syntax error, unexpected ##
+Error: 0
+	Use error_info for more info. (CMD-013)
+Information: script 'run.tcl'
+	stopped at line 31 due to error. (CMD-081)
+Extended error info:
+0
+    while executing
+"fvassume -expr {@(posedge clk) disable iff (!reset_n)
+    !( (present_state == SEND_WRITE_ACK && stop == 1 && !illegal_addr)
+       ##[1:$]
+       ..."
+    (file "run.tcl" line 31)
+ -- End Extended Error Info
+#check_fv
+[Info] FORMAL_I_CREATE: Create Formal Model:top_I2C.
+[Warning] POTENTIAL_SETUP_ISSUES: There are potential setup issues. Please run check_fv_setup to confirm.
+	  Reset: 1  Clock: 2  Glitch: 0  Osc_loop: 0  Osc_seq: 0
+[Info] FORMAL_I_RUN: Starting formal verification for check_fv
+	  Id: 0  Goals: 57  Constraints: 10  Block Mode: false
+[Info] LIC_UNUSED_WORKERS: 8 unused worker(s) based 1 licenses needed to support 4 workers requested.
+	Use 'set_grid_usage' to maximize worker usage and improve performance, if there are sufficient compute resources to support more workers.
+	Each runtime license supports 12 workers.
+[Info] LIC_RT_CHECKOUT: VC Formal run time license checkout. Base:1  FPV:1.
+[Info] RETRIEVE_LEARN_DATA: Retrieved learned data from (local directory) top_I2C_learn_dir.
+[Info] BITLEVEL_MODEL_STATS: Generated model with 28586 gates, 53 inputs, 4248 registers, 0 initial constraints, 0 constraints.
+[Info] BITLEVEL_MODEL_STATS: Generated model with 22375 gates, 64 inputs, 4231 registers, 0 initial constraints, 0 constraints.

@@ -1,0 +1,34 @@
+module shift_register_sva(
+input logic [N-1:0] Q,
+input logic Clock,
+input logic Clear,
+
+input logic [N-1:0] D,
+input logic [2:0] S,
+input logic MSBIn,
+input logic LSBIn);
+
+
+property sr1_p;
+    @(posedge Clock) disable iff(!Clear)
+                 (S == 3'b000) |=> (Q == $past(Q));
+endproperty
+assertion_sr1_a : assert property(sr1_p)
+    else $display("sr1_p property failed!");
+
+                 
+property sr2_p;
+    @(posedge Clock) disable iff(!Clear)
+                 (S == 3'b001) |=> (Q == $past(D));
+endproperty
+assertion_sr2_a : assert property(sr2_p)
+    else $display("sr2_p property failed!");
+
+
+property sr3_p;
+    @(posedge Clock) disable iff(!Clear)
+                 (S == 3'b100) |=> (Q == {$past(Q[0]), $past(Q[N-1:1])});
+endproperty
+assertion_sr3_a : assert property(sr3_p)
+    else $display("sr3_p property failed!");
+endmodule

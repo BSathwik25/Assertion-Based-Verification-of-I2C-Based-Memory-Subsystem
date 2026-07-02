@@ -1,0 +1,99 @@
+
+bind I2C_master I2C_master_sva assert_master (
+    .data_in        (data_in),
+    .addr_in        (addr_in),
+    .clk            (clk),
+    .reset          (reset),
+    .ACK            (ACK),
+    .wr_rdn_en_in   (wr_rdn_en_in),
+    .enable         (enable),
+    .SDA            (SDA),
+    .SCL            (SCL_drv),
+    .present_state  (present_state),
+    .next_state     (next_state),
+    .count          (count),
+    .count1         (count1),
+    .wr_rdn_en      (wr_rdn_en)
+);
+
+//==========================================================
+// Slave Assertions ( Added illegal_addr)
+//==========================================================
+bind I2C_slave I2C_slave_sva assert_slave (
+    .data_out       (data_out),
+    .done           (done),
+    .ACK            (ACK),
+    .SDA            (SDA),
+    .SCL            (SCL),
+    .clk            (clk),
+    .reset_n        (reset_n),
+    .present_state  (present_state),
+    .next_state     (next_state),
+    .addr_count     (addr_count),
+    .data_count     (data_count),
+    .m_rd_wrn       (m_rd_wrn),
+    .start          (start),
+    .stop           (stop),
+    .illegal_addr   (illegal_addr)  // ADDED THIS
+);
+
+//==========================================================
+//Shift Register Assertions 
+//==========================================================
+bind shift_register shift_register_sva assert_sr (
+    .Q      (Q),
+    .Clock  (Clock),
+    .Clear  (Clear),
+    .D      (D),
+    .S      (S),
+    .MSBIn  (MSBIn),
+    .LSBIn  (LSBIn)
+);
+
+//==========================================================
+//  Protocol-Level Assertions 
+//==========================================================
+bind top_I2C I2C_protocol_sva assert_protocol (
+    .clk     (clk),
+    .reset_n (reset_n),
+    .SDA     (SDA),
+    .SCL     (SCL)
+);
+
+//==========================================================
+// End-to-End Data Consistency SVA 
+//==========================================================
+bind I2C_slave I2C_end2end_sva assert_end2end (
+    .clk            (clk),
+    .reset_n        (reset_n),
+    .present_state  (present_state),
+    .m_addr         (m_addr),
+    .m_data         (m_data),
+    .m_rd_wrn       (m_rd_wrn),
+    .illegal_addr   (illegal_addr),
+    .data_out       (data_out),
+    .done           (done),
+    .stop           (stop)
+);
+
+//==========================================================
+// Coverage for Master (burst, repeated start)
+//==========================================================
+bind I2C_master I2C_master_cov cover_master (
+    .clk            (clk),
+    .reset          (reset),
+    .wr_rdn_en_in   (wr_rdn_en_in),
+    .burst_cnt      (burst_cnt),
+    .present_state  (present_state)
+);
+
+//==========================================================
+//  Coverage for Slave (illegal addr, stretch)
+//==========================================================
+bind I2C_slave I2C_slave_cov cover_slave (
+    .clk            (clk),
+    .reset_n        (reset_n),
+    .illegal_addr   (illegal_addr),
+    .stretch_en     (stretch_en),
+    .present_state  (present_state)
+);

@@ -1,0 +1,17 @@
+Elaborated Name: 'top_I2C'
+Elaborated Name: 'Mux8to1'
+Elaborated Name: 'I2C_master'
+        BURST_LEN = 8
+        REP_START_EN = 1'b1
+Elaborated Name: 'I2C_slave'
+        MEM_TOTAL_DEPTH = 256
+        MEM_LEGAL_DEPTH = 128
+Elaborated Name: 'I2C_master_sva'
+Elaborated Name: 'I2C_slave_sva'
+Elaborated Name: 'shift_register_sva'
+Elaborated Name: 'I2C_protocol_sva'
+Elaborated Name: 'I2C_end2end_sva'
+Elaborated Name: 'I2C_master_cov'
+Elaborated Name: 'I2C_slave_cov'
+Elaborated Name: 'shift_register_0000'
+Elaborated Name: 'DFF'

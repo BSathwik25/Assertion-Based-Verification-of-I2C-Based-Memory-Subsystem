@@ -1,0 +1,62 @@
+# //  Questa Sim-64
+# //  Version 2024.2 linux_x86_64 May 20 2024
+# //
+# // Unpublished work. Copyright 2024 Siemens
+# //
+# // This material contains trade secrets or otherwise confidential information
+# // owned by Siemens Industry Software Inc. or its affiliates (collectively,
+# // "SISW"), or its licensors. Access to and use of this information is strictly
+# // limited as set forth in the Customer's applicable agreements with SISW.
+# //
+# // This material may not be copied, distributed, or otherwise disclosed outside
+# // of the Customer's facilities without the express written permission of SISW,
+# // and may not be used in any way not expressly authorized by SISW.
+# //
+# OpenFile run.do
+do run.do
+# ** Warning: (vlib-34) Library already exists at "work".
+# Errors: 0, Warnings: 1
+# QuestaSim-64 vmap 2024.2 Lib Mapping Utility 2024.05 May 20 2024
+# vmap work work 
+# Modifying modelsim.ini
+# QuestaSim-64 vlog 2024.2 Compiler 2024.05 May 20 2024
+# Start time: 20:53:43 on Nov 29,2025
+# vlog -reportprogress 300 -sv ../RTL/I2C_package.sv ../RTL/design_defines.vh ../RTL/shift_register.sv ../RTL/I2C_master.sv ../RTL/I2C_slave.sv ../RTL/top_I2C.sv ../RTL/top_I2C_tb.sv 
+# -- Compiling package i2c_package
+# -- Compiling package design_defines_vh_unit
+# -- Compiling module DFF
+# -- Compiling module Mux8to1
+# ** Error: ../RTL/shift_register.sv(17): (vlog-2730) Undefined variable: 'N'.
+# ** Error: ../RTL/shift_register.sv(15): (vlog-13294) Identifier must be declared with a port mode: V.
+# -- Compiling module shift_register
+# ** Error: ../RTL/shift_register.sv(26): (vlog-2730) Undefined variable: 'N'.
+# ** Error: ../RTL/shift_register.sv(24): (vlog-13294) Identifier must be declared with a port mode: Q.
+# -- Compiling module I2C_master
+# ** Error: ../RTL/I2C_master.sv(7): (vlog-2730) Undefined variable: 'DATA_WIDTH'.
+# ** Error (suppressible): ../RTL/I2C_master.sv(7): (vlog-2388) 'data_in' already declared in this scope (I2C_master) at ../RTL/I2C_master.sv(7).
+# ** Error: ../RTL/I2C_master.sv(8): (vlog-2730) Undefined variable: 'ADDR_WIDTH'.
+# ** Error (suppressible): ../RTL/I2C_master.sv(8): (vlog-2388) 'addr_in' already declared in this scope (I2C_master) at ../RTL/I2C_master.sv(8).
+# ** Error: ../RTL/I2C_master.sv(7): (vlog-13294) Identifier must be declared with a port mode: data_in.
+# ** Error: ../RTL/I2C_master.sv(8): (vlog-13294) Identifier must be declared with a port mode: addr_in.
+# -- Compiling module I2C_slave
+# ** Error (suppressible): ../RTL/I2C_slave.sv(7): (vlog-2388) 'data_out' already declared in this scope (I2C_slave) at ../RTL/I2C_slave.sv(7).
+# ** Error: ../RTL/I2C_slave.sv(7): (vlog-13294) Identifier must be declared with a port mode: data_out.
+# -- Compiling module top_I2C
+# ** Error (suppressible): ../RTL/top_I2C.sv(7): (vlog-2388) 'addr_in' already declared in this scope (top_I2C) at ../RTL/top_I2C.sv(7).
+# ** Error (suppressible): ../RTL/top_I2C.sv(8): (vlog-2388) 'D_in' already declared in this scope (top_I2C) at ../RTL/top_I2C.sv(8).
+# ** Error: ../RTL/top_I2C.sv(7): (vlog-13294) Identifier must be declared with a port mode: addr_in.
+# ** Error: ../RTL/top_I2C.sv(8): (vlog-13294) Identifier must be declared with a port mode: D_in.
+# -- Compiling module tb_top_I2C
+# -- Importing package i2c_package
+# End time: 20:53:43 on Nov 29,2025, Elapsed time: 0:00:00
+# Errors: 16, Warnings: 0
+# ** Error: /pkgs/mentor/questa/2024.2/questasim/linux_x86_64/vlog failed.
+# Error in macro ./run.do line 18
+# /pkgs/mentor/questa/2024.2/questasim/linux_x86_64/vlog failed.
+#     while executing
+# "vlog -sv \
+#     ../RTL/I2C_package.sv \
+#     ../RTL/design_defines.vh \
+#     ../RTL/shift_register.sv \
+#     ../RTL/I2C_master.sv \
+#     ../RTL/I2C_slave.s..."
